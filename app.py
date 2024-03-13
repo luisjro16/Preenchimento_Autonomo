@@ -11,8 +11,6 @@ auto.write('https://cadastro-produtos-devaprender.netlify.app/index.html')
 auto.press('enter')
 auto.sleep(4)
 
-cont = 0
-
 for linha in sheet_product.iter_rows(min_row=2):
     
     #Nome
