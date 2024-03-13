@@ -1,138 +1,144 @@
-# NÃO ADIANTA PEGAR O CÓDIGO E QUERER RODAR SEM MUDAR AS COORDENAS!
-# CADA JANELA TEM POSIÇÕES(COORDENADAS DIFERENTES)
-# SENDO ASSIM, ASSISTA O VIDEO INTEIRO PARA ENTENDER COMO MONTAR ESTE PROGRAMA
+import openpyxl as op
+import pyperclip as copy
+import pyautogui as auto
 
-import openpyxl
-import pyperclip
-import pyautogui
-from time import sleep
+product_WB = op.load_workbook('produtos_ficticios.xlsx')
+sheet_product = product_WB['Produtos']
 
-# Entrar na planilha
-workbook = openpyxl.load_workbook('produtos_ficticios.xlsx')
-sheet_produtos = workbook['Produtos']
-# Copiar informação de um campo e colar no seu campo correspondente
-for linha in sheet_produtos.iter_rows(min_row=2):
-    # Nome do Produto
+auto.press('win')
+auto.press('enter')
+auto.write('https://cadastro-produtos-devaprender.netlify.app/index.html')
+auto.press('enter')
+auto.sleep(4)
+
+cont = 0
+
+for linha in sheet_product.iter_rows(min_row=2):
+    
+    #Nome
     nome_produto = linha[0].value
-    pyperclip.copy(nome_produto)
-    pyautogui.click(1518,305,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Descrição
+    copy.copy(nome_produto)
+    auto.click(x=767, y=320)
+    auto.hotkey('ctrl', 'v')
+    
+    #Descricao
     descricao = linha[1].value
-    pyperclip.copy(descricao)
-    pyautogui.click(1472,413,duration=1)
-    pyautogui.hotkey('ctrl','v')
-    
-    # Categoria
+    copy.copy(descricao)
+    auto.click(x=767, y=428)
+    auto.hotkey('ctrl', 'v')
+
+    auto.sleep(1)
+
+    #Categoria
     categoria = linha[2].value
-    pyperclip.copy(categoria)
-    pyautogui.click(1467,526,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Codigo Produto
-    codigo_produto = linha[3].value
-    pyperclip.copy(codigo_produto)
-    pyautogui.click(1481,614,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Peso
-    peso = linha[4].value
-    pyperclip.copy(peso)
-    pyautogui.click(1463,691,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Dimensões
-    dimensoes = linha[5].value
-    pyperclip.copy(dimensoes)
-    pyautogui.click(1465,783,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Botão próximo
-    pyautogui.click(1456,854,duration=1)
-    sleep(3)
-
-    # Preço
-    preco = linha[6].value
-    pyperclip.copy(preco)
-    pyautogui.click(1539,325,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Quantidade em estoque
-    quantidade_em_estoque = linha[7].value
-    pyperclip.copy(quantidade_em_estoque)
-    pyautogui.click(1515,411,duration=1)
-    pyautogui.hotkey('ctrl','v')
-
-    # Data de validade
-    data_de_validade = linha[8].value
-    pyperclip.copy(data_de_validade)
-    pyautogui.click(1504,501,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    copy.copy(categoria)
+    auto.click(x=767, y=569)
+    auto.hotkey('ctrl', 'v')
     
-    # Cor
+    #Codigo
+    codigo = linha[3].value
+    copy.copy(codigo)
+    auto.click(x=767, y=677)
+    auto.hotkey('ctrl', 'v')
+
+    #Peso
+    peso = linha[4].value
+    copy.copy(peso)
+    auto.click(x=767, y=781)
+    auto.hotkey('ctrl', 'v')
+
+    #Dimensao
+    dimensao = linha[5].value
+    copy.copy(dimensao)
+    auto.click(x=767, y=888)
+    auto.hotkey('ctrl', 'v')
+
+    #Proximo
+    auto.moveTo(x=170, y=968)
+    auto.click()
+    auto.sleep(2)
+
+    #Preco
+    preco = linha[6].value
+    copy.copy(preco)
+    auto.moveTo(x=338, y=330)
+    auto.click()
+    auto.hotkey('ctrl', 'v')
+
+    #Quantidade
+    quantidade = linha[7].value
+    copy.copy(quantidade)
+    auto.moveTo(x=767, y=436)
+    auto.click()
+    auto.hotkey('ctrl', 'v')
+
+    #Validade
+    validade = linha[8].value
+    copy.copy(validade)
+    auto.click(x=767, y=553)
+    auto.hotkey('ctrl', 'v')
+
+    #Cor
     cor = linha[9].value
-    pyperclip.copy(cor)
-    pyautogui.click(1489,574,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    copy.copy(cor)
+    auto.click(x=767, y=638)
+    auto.hotkey('ctrl', 'v')
 
-    # Tamanho
+    #Tamanho
     tamanho = linha[10].value
-    pyautogui.click(1530,670,duration=1)
+    copy.copy(tamanho)
+    auto.click(x=254, y=757, duration=0.5)
     if tamanho == 'Pequeno':
-        pyautogui.click(1520,705,duration=1)
+        auto.click(x=235, y=803, duration=1)
     elif tamanho == 'Médio':
-        pyautogui.click(1509,730,duration=1)
+        auto.click(x=204, y=830, duration=1)
     else:
-        pyautogui.click(1503,748,duration=1)
+        auto.click(x=202, y=855, duration=1)
 
-    # material    
-    material = linha[11].value
-    pyperclip.copy(material)
-    pyautogui.click(1482,753,duration=1)
-    pyautogui.hotkey('ctrl','v')
-    # Botão próximo
-    pyautogui.click(1494,808,duration=1)
+    #Material
+    validade = linha[11].value
+    copy.copy(validade)
+    auto.click(x=767, y=865)
+    auto.hotkey('ctrl', 'v')
 
+    #Proximo
+    auto.moveTo(x=170, y=918)
+    auto.click()
+    auto.sleep(2)
+
+    #Fabricante
     fabricante = linha[12].value
-    pyperclip.copy(fabricante)
-    pyautogui.click(1465,347,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    copy.copy(fabricante)
+    auto.click(x=767, y=351)
+    auto.hotkey('ctrl', 'v')
 
-    pais_origem = linha[13].value
-    pyperclip.copy(pais_origem)
-    pyautogui.click(1473,426,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    #Origem
+    origem = linha[13].value
+    copy.copy(origem)
+    auto.click(x=767, y=452)
+    auto.hotkey('ctrl', 'v')
 
+    #observacoes
     observacoes = linha[14].value
-    pyperclip.copy(observacoes)
-    pyautogui.click(1475,523,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    copy.copy(observacoes)
+    auto.click(x=767, y=566)
+    auto.hotkey('ctrl', 'v')
 
-    codigo_de_barras = linha[15].value
-    pyperclip.copy(codigo_de_barras)
-    pyautogui.click(1471,655,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    #Codigo
+    codigo = linha[15].value
+    copy.copy(codigo)
+    auto.click(x=881, y=734)
+    auto.hotkey('ctrl', 'v')
 
-    localizacao_armazem = linha[16].value
-    pyperclip.copy(localizacao_armazem)
-    pyautogui.click(1472,733,duration=1)
-    pyautogui.hotkey('ctrl','v')
+    #Localizacao
+    localizacao = linha[16].value
+    copy.copy(localizacao)
+    auto.click(x=767, y=830)
+    auto.hotkey('ctrl', 'v')
 
-    # Botão concluir
-    pyautogui.click(1485,814,duration=1)
-    # Botão confirmar inclusão
-    pyautogui.click(1887,198,duration=1)
-    # Botão confirmação 2
-    pyautogui.click(1886,191,duration=1)
-    # iniciar cadastro novamente
-    pyautogui.click(1695,580,duration=1)
-
-# Repitir esses passos para outros campos até preencher campos daquela página
-# Clicar em próxima
-# Repetir os mesmos passos e ir para a próxima página(página 2)
-# Repetir os mesmos passos e finalizar o cadastro daquele produto e clicar em concluir
-# clicar em ok, para finalizar o processo
-# Clicar no ok mais um vez na mensagem de confirmação de salvamento no banco de dados
-# Clicar em "adicionar mais um e repetir o processo até finalizar a planilha"
-
+    #botao concluir
+    auto.click(x=169, y=910)
+    auto.press('enter')
+    auto.sleep(2)
+    auto.click(x=919, y=629)
+    auto.sleep(3)
